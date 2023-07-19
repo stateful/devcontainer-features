@@ -1,5 +1,5 @@
 {
-    "hello": {
+    "runme": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "runme": {
