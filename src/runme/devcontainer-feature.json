@@ -7,8 +7,7 @@
         "version": {
             "type": "string",
             "proposals": [
-                "latest",
-                "none"
+                "latest"
             ],
             "default": "latest",
             "description": "Select or enter a Runme version to install"

@@ -10,7 +10,21 @@ source dev-container-features-test-lib
 # Feature-specific tests
 # The 'check' command comes from the dev-container-features-test-lib. Syntax is...
 # check <LABEL> <cmd> [args...]
-check "execute command" bash -c "runme --version | grep '1.4.1'"
+echo "# Runbook
+
+## First command
+
+\`\`\`sh { name=first-command }
+echo 'Hello World'
+\`\`\`
+" &> RUNBOOK.md
+
+# Feature-specific tests
+# The 'check' command comes from the dev-container-features-test-lib.
+check "check if it can list runbooks" bash -c "runme list | grep 'first-command'"
+check "check if it can list runbooks" bash -c "runme list | grep 'RUNBOOK.md'"
+check "check if it can list runbooks" bash -c "runme run first-command | grep 'Hello World'"
+
 
 # Report results
 # If any of the checks above exited with a non-zero exit code, the test will fail.
