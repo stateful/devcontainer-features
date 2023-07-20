@@ -11,13 +11,16 @@ source ./library_scripts.sh
 # of the script
 ensure_nanolayer nanolayer_location "v0.4.45"
 
+export RUNME_DOWNLOAD_ON_INSTALL=1
+if [ "$VERSION" != "latest" ]
+then
+  export RUNME_VERSION=$VERSION
+fi
 
 $nanolayer_location \
     install \
     devcontainer-feature \
-    "ghcr.io/devcontainers-contrib/features/gh-release:1.0.18" \
-    --option repo='stateful/runme' --option binaryNames='runme' --option version="$VERSION" --option releaseTagRegex='^v[0-9\.]+$'
-    
-
+    "ghcr.io/devcontainers-contrib/features/npm-package:1.0.3" \
+    --option package='runme'
 
 echo 'Done!'

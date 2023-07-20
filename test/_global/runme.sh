@@ -31,6 +31,7 @@ echo 'Hello World'
 
 # Feature-specific tests
 # The 'check' command comes from the dev-container-features-test-lib.
+check "check if it can list runbooks" bash -c "runme --version | grep '1.4.1'"
 check "check if it can list runbooks" bash -c "runme list | grep 'first-command'"
 check "check if it can list runbooks" bash -c "runme list | grep 'RUNBOOK.md'"
 check "check if it can list runbooks" bash -c "runme run first-command | grep 'Hello World'"
