@@ -1,14 +1,21 @@
 
-# Hello, World! (hello)
+# Runme
 
 A hello world feature
 
-## Example Usage
+## Usage
 
-```json
-"features": {
-    "ghcr.io/devcontainers/feature-starter/hello:1": {
-        "version": "latest"
+Latest version installed by default. You can pin a specific version or specify latest or none if you wish to have the latest version or skip the installation. Please see below for an example:
+
+### `runme`
+
+```jsonc
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/stateful/devcontainer-features/runme:1": {
+            "version": "latest"
+        }
     }
 }
 ```
@@ -17,9 +24,7 @@ A hello world feature
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| greeting | Select a pre-made greeting, or enter your own | string | hey |
-
-
+| version | Select or enter a gomplate version to install | string | latest |
 
 ---
 
