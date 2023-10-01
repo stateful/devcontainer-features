@@ -11,6 +11,11 @@
             ],
             "default": "latest",
             "description": "Select or enter a Runme version to install"
+        },
+        "completions": {
+            "default": true,
+            "description": "Attempt to install shell completions for bash & zsh.",
+            "type": "boolean"
         }
     },
     "installsAfter": [

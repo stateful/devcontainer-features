@@ -23,4 +23,18 @@ $nanolayer_location \
     "ghcr.io/devcontainers-contrib/features/npm-package:1.0.3" \
     --option package='runme'
 
+# Need a new shell to pick up NVM paths
+bash -i << EOF
+if [ "$COMPLETIONS" = "true" ]; then {
+  # runme bash completion
+  mkdir -p /etc/bas_completion.d
+  runme completion bash > /etc/bash_completion.d/runme
+
+  # runme zsh completion
+  if [ -e "/usr/share/zsh/vendor-completions" ]; then 
+    runme completion zsh > /usr/share/zsh/vendor-completions/_runme
+  fi
+} fi
+EOF
+
 echo 'Done!'
