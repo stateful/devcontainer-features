@@ -27,7 +27,7 @@ $nanolayer_location \
 bash -i << EOF
 if [ "$COMPLETIONS" = "true" ]; then {
   # runme bash completion
-  mkdir -p /etc/bas_completion.d
+  mkdir -p /etc/bash_completion.d
   runme completion bash > /etc/bash_completion.d/runme
 
   # runme zsh completion
