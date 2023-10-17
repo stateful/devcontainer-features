@@ -18,7 +18,7 @@ Latest version installed by default. You can pin a specific version or specify l
 {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "ghcr.io/stateful/devcontainer-features/runme:1": {
+        "ghcr.io/stateful/devcontainer-features/runme:0.1.0": {
             "version": "latest"
         }
     }
