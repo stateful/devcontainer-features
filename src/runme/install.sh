@@ -23,8 +23,8 @@ $nanolayer_location \
     "ghcr.io/devcontainers-contrib/features/npm-package:1.0.3" \
     --option package='runme'
 
-# Need a new shell to pick up NVM paths
-bash -i << EOF
+# check if compleetion is true
+
 if [ "$COMPLETIONS" = "true" ]; then
   # Check if the current shell is Bash
   if [ "$(basename $SHELL)" = "bash" ]; then
@@ -68,6 +68,6 @@ if [ "$COMPLETIONS" = "true" ]; then
   fi
   
 fi
-EOF
+
 
 echo 'Done!'
