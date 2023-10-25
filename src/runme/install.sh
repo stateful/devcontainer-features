@@ -23,51 +23,18 @@ $nanolayer_location \
     "ghcr.io/devcontainers-contrib/features/npm-package:1.0.3" \
     --option package='runme'
 
-# check if compleetion is true
-
-if [ "$COMPLETIONS" = "true" ]; then
-  # Check if the current shell is Bash
-  if [ "$(basename $SHELL)" = "bash" ]; then
-    # runme bash completion
-    mkdir -p /etc/bash_completion.d
-    runme completion bash > /etc/bash_completion.d/runme
-    source /etc/bash_completion.d/runme
+# Need a new shell to pick up NVM paths
+bash -i << EOF
+if [ "$COMPLETIONS" = "true" ]; then {
+  # runme bash completion
+  mkdir -p /etc/bas_completion.d
+  runme completion bash > /etc/bash_completion.d/runme
+  # runme zsh completion
+  if [ -e "/usr/share/zsh/vendor-completions" ]; then 
+    runme completion zsh > /usr/share/zsh/vendor-completions/_runme
   fi
-
-  # Check if the current shell is Zsh
-  if [ "$(basename $SHELL)" = "zsh" ]; then
-
-    # runme zsh completion
-    ZSH_COMPLETIONS_DIR="/usr/share/zsh/site-functions/"
-    
-    mkdir -p $ZSH_COMPLETIONS_DIR
-    runme completion zsh > "$ZSH_COMPLETIONS_DIR/_runme"
-    source $ZSH_COMPLETIONS_DIR/_runme
-  fi
-
-  # Check if the current shell is fish
-  if [ "$(basename $SHELL)" = "fish" ]; then
-
-    # runme fish completion
-    FISH_COMPLETIONS_DIR="/usr/share/fish/vendor_completions.d"
-    
-    mkdir -p $FISH_COMPLETIONS_DIR
-    runme completion fish > "$FISH_COMPLETIONS_DIR/_runme"
-    source $FISH_COMPLETIONS_DIR/_runme
-  fi
-
-  # Check if the current shell is PowerShell
-  if [ "$(basename $SHELL)" = "pwsh" ]; then
-
-    # Enable Powershell tab-completion
-    Set-PSReadlineKeyHandler -Key Tab -Function Complete
-    
-    mkdir -p $FISH_COMPLETIONS_DIR
-    runme completion fish > "$FISH_COMPLETIONS_DIR/_runme"
-    source $FISH_COMPLETIONS_DIR/_runme
-  fi
-  
-fi
+} fi
+EOF
 
 
 echo 'Done!'
